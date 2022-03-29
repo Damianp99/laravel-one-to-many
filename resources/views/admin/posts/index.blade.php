@@ -13,17 +13,19 @@
             <div class="card p-3">
                 <h3>{{$post->title}}</h3>
                 <p>{{$post->description}}</p>
-                <div class="d-flex justify-content-between ">
-                    <div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge badge-pill badge-{{$post->category->color}}">
+                        {{$post->category->label}}
+                    </span>
+                     <div class="d-flex">
                         <a href="{{route('admin.posts.show',$post->id)}}" class="btn btn-sm btn-success"><i class="fa-solid fa-eye"></i></a>
                         <a href="{{route('admin.posts.edit',$post->id)}}" class="btn btn-sm btn-warning mx-3"><i class="fa-solid fa-pencil"></i></a>
+                        <form action="{{route('admin.posts.destroy',$post->id)}}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </form>          
                     </div>
-                    <form action="{{route('admin.posts.destroy',$post->id)}}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
-                    </form>
-                    
                 </div>
             </div>
         </li>
