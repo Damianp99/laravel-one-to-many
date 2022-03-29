@@ -13,19 +13,20 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $categories = [
-            ['label' => 'FOOD'],
-            ['label' => 'TRAVEL'],
-            ['label' => 'ECONOMY'],
-            ['label' => 'SPORT'],
-            ['label' => 'PHOTOGRAPHY'],
-            ['label' => 'NATURE'],
-            ['label' => 'ANIMALS'],
-            ['label' => 'SPACE'],
+            ['label' => 'FOOD', 'color' => 'warning'],
+            ['label' => 'TRAVEL', 'color' => 'info'],
+            ['label' => 'ECONOMY', 'color' => 'danger'],
+            ['label' => 'SPORT', 'color' => 'success'],
+            ['label' => 'PHOTOGRAPHY', 'color' => 'primary'],
+            ['label' => 'NATURE', 'color' => 'secondary'],
+            ['label' => 'ANIMALS', 'color' => 'dark'],
+            ['label' => 'SPACE', 'color' => 'light'],
         ];
 
         foreach ($categories as $category) {
             $newCategory = new Category;
             $newCategory->label = $category['label'];
+            $newCategory->color = $category['color'];
             $newCategory->save();
         }
     }
